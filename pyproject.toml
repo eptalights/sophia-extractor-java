@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools >= 65.3.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sophia-extractor-java"
+version = "0.0.1"
+description = "An Eptalights Sophia Java tool for extracting Java (Jimple) instructions into JSON format."
+readme = "README.md"
+requires-python = ">= 3.11"
+license = { text = "Eptalights Research" }
+authors = [ { name = "Eptalights Research", email = "samuelasirifi1@gmail.com" } ]
+dependencies = [
+    "pydantic == 2.10.3",
+    "jpype1 == 1.5.2",
+]
+
+[project.urls]
+Source = "https://github.com/eptalights/sophia-extractor-java"
+
+[project.scripts]
+sophia_java_extractor = "sophia_extractor_java.cmdtools:extractor"
+sophia_java_jimple_dump = "sophia_extractor_java.cmdtools:jimple_dump"
+
+[project.optional-dependencies]
+dev = [
+    # Running tests and linters
+    "black == 23.12.1",
+    "flake8 == 6.0.0",
+    "pytest == 7.2.1",
+]
+
+[tool.setuptools.packages.find]
+where = [ "src" ]
+
+[tool.setuptools.package-data]
+"sophia_extractor_java" = ["jars/*"]
+
+[tool.setuptools]
+zip-safe = false
+package-dir = { "" = "src" }
+
+[tool.pytest.ini_options]
+addopts = "-vv --durations=0"
+testpaths = ["tests"]
