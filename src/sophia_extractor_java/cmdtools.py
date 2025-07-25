@@ -25,7 +25,7 @@ def extractor():
     parser = argparse.ArgumentParser(description="extract JAR/classes-dir into JSON")
     parser.add_argument("-b", "--binary-path", required=True)
     parser.add_argument(
-        "-e", "--extract-path", required=False, default="./jimple_output"
+        "-e", "--extract-path", required=False, default="./sophia_jimple_output"
     )
     args = parser.parse_args()
 
